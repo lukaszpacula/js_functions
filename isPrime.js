@@ -1,5 +1,21 @@
+/* HTML CODE:
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <body>
+      <input id="number" type="number" pattern="[0-9]"> 
+      <button onclick="prime()">Check</button>
+      <p id="demo"></p>
+      <script src="isPrime.js"></script>
+    </body>
+  </head>
+</html>
+*/
+
 function prime() {
   var x = document.getElementById("number").value;
+  document.getElementById("number").value = Math.floor(x);
   function isPrime(input) {
     var txt = ["Not prime", "Prime"];
     if (input == 1) {
@@ -8,7 +24,7 @@ function prime() {
       return txt[1];
     } else if (input % 2 == 0) {
       return txt[0];
-    }
+    } 
     for (var i = 3; i <= Math.sqrt(input); i += 2) {
       if (input % i == 0) {
         return txt[0];
@@ -16,5 +32,5 @@ function prime() {
     }
     return txt[1];
   }
-  document.getElementById("demo").innerHTML = isPrime(x);
+  document.getElementById("demo").innerHTML = isPrime(Math.floor(x));
 };
