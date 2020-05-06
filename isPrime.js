@@ -17,7 +17,7 @@ function prime() {
   document.getElementById("number").value = Math.floor(x);
   function isPrime(input) {
     var txt = ["Not prime", "Prime"];
-    if (input == 1 || input == 0) {
+    if (input == 1 || 0) {
       return txt[0];
     } else if (input < 0) {
       return "Wrong number"
