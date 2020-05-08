@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl-PL">
+
 <head>
+    <meta charset="UTF-8">
     <style>
         .answer {
             color: red;
@@ -13,46 +15,22 @@
     </style>
 
 <body>
-    <h3> Type an integer below and check if Prime or Not Prime: </h3>
+    <h3> Wpisz poniżej liczbę całkowitą i sprawdź czy jest liczbą pierwszą: </h3>
     <input id="number" type="number" pattern="[0-9]">
-    <button onclick="prime()">Check</button>
-    <button onclick="prime(), dwa()">Check all between</button><br><br>
-    <b><span>Answer: </span><span class="answer" id="demo"></span></b>
-    <h4>All prime numbers between your number and 0:</h4>
+    <button onclick="check()">Sprawdź</button>
+    <button onclick="check(), checkAll()">Znajdź wszytkie liczby pierwsze</button><br><br>
+    <b><span>Odpowiedź: </span><span class="answer" id="demo"></span></b>
+    <h4>Wszystkie liczby pierwsze pomiędzy Twoją liczbą a 0:</h4>
     <b><p id="demo2"></p></b>
 
     <script>
 
-        function prime() {
-            var x = document.getElementById("number").value;
-            document.getElementById("number").value = Math.floor(x);
-            function isPrime(input) {
-                var txt = ["Not Prime", "Prime"];
-                if (input == 1 || 0) {
-                    return txt[0];
-                } else if (input < 0) {
-                    return "Wrong number"
-                } else if (input == 2) {
-                    return txt[1];
-                } else if (input % 2 == 0) {
-                    return txt[0];
-                }
-                for (var i = 3; i <= Math.sqrt(input); i += 2) {
-                    if (input % i == 0) {
-                        return txt[0];
-                    }
-                }
-                return txt[1];
-            }
-            document.getElementById("demo").innerHTML = isPrime(Math.floor(x));
-        };
-
         function isPrime(input) {
-            var txt = ["Not Prime", "Prime"];
+            var txt = ["Nie", "Tak"];
             if (input == 1 || 0) {
                 return txt[0];
             } else if (input < 0) {
-                return "Wrong number"
+                return "Zły numer"
             } else if (input == 2) {
                 return txt[1];
             } else if (input % 2 == 0) {
@@ -65,14 +43,20 @@
             }
             return txt[1];
         }
-        
-        function dwa() {
+
+        function check() {
+            var x = document.getElementById("number").value;
+            document.getElementById("number").value = Math.floor(x);
+            document.getElementById("demo").innerHTML = isPrime(x);
+        };
+
+        function checkAll() {
             var x = document.getElementById("number").value;
             document.getElementById("number").value = Math.floor(x);
             var i;
             var txt = "";
             for (i = 0; i < x; i++) {
-                if (isPrime(i) == "Prime") {
+                if (isPrime(i) == "Tak") {
                     txt += i + ", ";
                 }
                 document.getElementById("demo2").innerHTML = txt;
@@ -82,4 +66,5 @@
     </script>
 </body>
 </head>
+
 </html>
